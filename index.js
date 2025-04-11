@@ -67,3 +67,15 @@ setInterval(enviarEntradasPublicas, 60 * 1000);
 bot.onText(/\/teste/, (msg) => {
   bot.sendMessage(msg.chat.id, "Bot está funcionando! ✅");
 });
+
+
+//FALSA PORTA
+// Evita erro de porta no Render - cria um servidor web "fake"
+const http = require('http');
+const PORT = process.env.PORT || 3000;
+http.createServer((req, res) => {
+  res.writeHead(200);
+  res.end('Bot is running!');
+}).listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
