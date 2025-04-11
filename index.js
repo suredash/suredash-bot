@@ -34,4 +34,36 @@ function buscarSurebetsMock() {
 function enviarEntradasPublicas() {
   const entradas = buscarSurebetsMock();
 
-  entradas.forEach((e
+  entradas.forEach((e) => {
+    const mensagem = `
+🏘🔹<b>${e.casa1}</b> x <b>${e.casa2}</b>🔸
+💰<b>${(e.lucro * 100).toFixed(2)}%</b>
+🏦<b>+${e.valorLucro.toFixed(2)}$</b> [${e.valorTotal.toFixed(2)}$]
+⏱️<b>${e.horarioPartida}</b>
+
+🏆<b>${e.esporte}</b>
+
+🔹<b>${e.casa1}:</b> ${e.confronto}
+🔸<b>${e.casa2}:</b> ${e.confronto}
+
+🔹<b>${e.casa1}:</b> ${e.odd1}
+💸<b>${e.valor1}$</b>
+${e.mercado1}
+
+🔸<b>${e.casa2}:</b> ${e.odd2}
+💸<b>${e.valor2}$</b>
+${e.mercado2}
+
+🔄<b>Atualizada:</b> ${e.atualizacao}
+📨<b>Enviado:</b> ${e.envio}
+`;
+
+    bot.sendMessage(PUBLIC_GROUP, mensagem, { parse_mode: "HTML" });
+  });
+}
+
+setInterval(enviarEntradasPublicas, 60 * 1000);
+
+bot.onText(/\/teste/, (msg) => {
+  bot.sendMessage(msg.chat.id, "Bot está funcionando! ✅");
+});
