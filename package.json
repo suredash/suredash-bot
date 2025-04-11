@@ -7,8 +7,9 @@
     "start": "node index.js"
   },
   "dependencies": {
+    "canvas": "^2.11.2",
     "dotenv": "^16.0.3",
-    "node-telegram-bot-api": "^0.61.0",
-    "moment": "^2.29.4"
+    "node-fetch": "^2.6.7",
+    "node-telegram-bot-api": "^0.61.0"
   }
 }
